@@ -1,0 +1,35 @@
+
+/target/
+/TestOutput/
+/workspace.xml
+/.idea/
+# Build filesbra
+*.o
+*.obj
+*.exe
+*.dll
+
+# Config files
+*.config
+*.ini
+
+# Log files
+*.log
+
+# SQLite database files
+*.sqlite
+*.db
+
+# IDE-specific files
+.idea/
+.vscode/
+
+
+# Downloaded files
+*.zip
+
+
+# Miscellaneous files
+*.pdf
+*.doc
+*.jpg
