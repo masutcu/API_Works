@@ -1,7 +1,7 @@
 
 /target/
 /TestOutput/
-/workspace.xml
+/.idea/workspace.xml
 /.idea/
 # Build filesbra
 *.o
