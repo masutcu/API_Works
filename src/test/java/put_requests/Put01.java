@@ -34,12 +34,15 @@ I send PUT Request to the Url
 
 
     @Test
-    public void put01() {
-        //set the url
+    public void put01(){
+        //Set the url
         spec.pathParams("first","todos","second",198);
 
-        //set the expeced data
-        Map<String,Object> expectedData=new JsonPlaceHolderTestData().expectedDataMapMethod(21,"Wash the dishes",false);
+        //Set the expected data
+        Map<String, Object> expectedData = new HashMap<>();
+        expectedData.put("userId",21);
+        expectedData.put("title","Wash the dishes");
+        expectedData.put("completed",false);
 
         System.out.println("expected data : "+expectedData);
 
@@ -48,6 +51,32 @@ I send PUT Request to the Url
        response.prettyPrint();
 
        //do assertion
+        Map<String,Object> actualData=response.as(HashMap.class); //de serialization json to java
+        System.out.println("actual data : "+actualData);
+        assertEquals(200,response.statusCode());
+        assertEquals(expectedData.get("completed"),actualData.get("completed"));
+        assertEquals(expectedData.get("title"),actualData.get("title"));
+        assertEquals(expectedData.get("userId"),actualData.get("userId"));
+
+
+
+    }
+    @Test
+    public void put01b(){
+        //Set the url
+        spec.pathParams("first","todos","second",198);
+
+        //Set the expected data  (DİKKAT burayı methodla halledeceğiz)
+       JsonPlaceHolderTestData jjj=new JsonPlaceHolderTestData();
+       Map < String,Object> expectedData=jjj.expectedDataMapMethod(21,"Wash the disshes",false);
+
+        System.out.println("expected data : "+expectedData);
+
+        //send the request get the response
+        Response response= given(spec).body(expectedData).put("{first}/{second}");
+        response.prettyPrint();
+
+        //do assertion
         Map<String,Object> actualData=response.as(HashMap.class); //de serialization json to java
         System.out.println("actual data : "+actualData);
         assertEquals(200,response.statusCode());

@@ -5,6 +5,7 @@ import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.internal.RequestSpecificationImpl;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -40,6 +41,8 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         //do assertion
+        Assert.assertEquals(200,response.getStatusCode());
+        //Print all ids greater than 190 on the console ==> id si 190 dan buyuk olanlari konsola yazdirin
         JsonPath jsonPath=response.jsonPath();
         List<Object> list=jsonPath.getList("findAll{it.id>190}.id");//Groovy Language -->java temelli programlama dili
         System.out.println("list : "+list);
