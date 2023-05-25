@@ -2,7 +2,6 @@ package get_requests;
 
 import base_urls.HerOkuAppBaseUrl;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -10,7 +9,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
-public class Get5 extends HerOkuAppBaseUrl {
+public class Get05 extends HerOkuAppBaseUrl {
     /*
     Given
         https://restful-booker.herokuapp.com/booking
@@ -25,6 +24,7 @@ And
 
     @Test
     public void get5() {
+        //Set the url
      //   String url="https://restful-booker.herokuapp.com/booking";
         spec.pathParam("first","booking").
                 queryParams("firstname","Sally","lastname","Brown");

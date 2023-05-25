@@ -32,7 +32,7 @@ public class Get04 extends JsonPlaceHolderBaseUrl {
     public void get04() {
         //Set the url
       //  String url="https://jsonplaceholder.typicode.com/todos"; // =>tavsiye edilmez
-             spec.pathParams("first","todos"); //spec: tekrarlı işlemlerin konulduğu RequestResponse
+             spec.pathParam("first","todos"); //spec: tekrarlı işlemlerin konulduğu RequestResponse
 
         //Set the expected data
 

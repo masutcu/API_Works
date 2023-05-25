@@ -9,6 +9,7 @@ public class JsonPlaceHolderBaseUrl {
     protected  RequestSpecification spec;
     @Before
     public void setUp(){
-        spec=new RequestSpecBuilder().setAccept(ContentType.JSON).setBaseUri("https://jsonplaceholder.typicode.com/").build();
+        spec=new RequestSpecBuilder().setContentType(ContentType.JSON).setAccept(ContentType.JSON).setBaseUri("https://jsonplaceholder.typicode.com/").build();
+    //setContentType(ContentType.JSON).setAccept(ContentType.JSON) önceki karşının alacağı, sonraki bizim kabıl edeceğimiz type
     }
 }
