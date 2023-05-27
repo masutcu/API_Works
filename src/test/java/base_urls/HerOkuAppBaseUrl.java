@@ -9,6 +9,6 @@ public class HerOkuAppBaseUrl {
     protected  RequestSpecification spec;
     @Before
     public void setUp(){
-        spec=new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com/").build();
+        spec=new RequestSpecBuilder().setContentType(ContentType.JSON).setBaseUri("https://restful-booker.herokuapp.com/").build();
     }
 }

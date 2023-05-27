@@ -32,31 +32,41 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
        }
 */
     @Test
-    public void get08(){
-        //set the url
-        spec.pathParams("first","todos","second",2);
-        //set the expected data
-        JsonPlaceHolderTestData obj=new JsonPlaceHolderTestData();
-        Map<String, Object> expectedData=obj.expectedDataMapMethod(1,"quis ut nam facilis et officia qui",false);
-        System.out.println("expected data : "+expectedData);
+    public void get08() {
+        //Set the url
+        spec.pathParams("first", "todos", "second", 2);
 
-        //send the request get the response
-        Response response=given(spec).get("{first}/{second}");
+        //Set the expected data
+        JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
+        Map<String, Object> expectedData = obj.expectedDataMapMethod(1, "quis ut nam facilis et officia qui", false);
+
+        expectedData.put("Via", "1.1 vegur");//Değişkeleri "Set the expected data" adımında ekliyoruz.
+        expectedData.put("Server", "cloudflare");
+
+        System.out.println("expectedData = " + expectedData);
+
+        //Send the request and get the response
+        Response response = given(spec).get("{first}/{second}");
         response.prettyPrint();
 
-        //do assertion
-        Map<String, Object> actualData=response.as(HashMap.class);
-        System.out.println("actual data . "+actualData);
+        //Do assertion
+        Map<String, Object> actualData = response.as(HashMap.class);
+        System.out.println("actualData = " + actualData);
 
-        assertEquals(200,response.statusCode());
-        assertEquals(expectedData.get("userId"),actualData.get("userId"));
-        assertEquals(expectedData.get("title"),actualData.get("title"));
-        assertEquals(expectedData.get("completed"),actualData.get("completed"));
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
 
+        //            And header "Via" is "1.1 vegur"
+        assertEquals(expectedData.get("Via"), response.header("Via")); //Assertion işlemini sabir değerler ile yapmalıyız
 
+        //            And header "Server" is "cloudflare"
+        assertEquals(expectedData.get("Server"), response.header("Server"));
 
+    }
 
     }
 
 
-}
+
