@@ -11,7 +11,7 @@ public class HerOkuAppTestData {
 
         return bookingdatesMap;
     }
-    public Map<String, Object> expectedDataMapMethod(String firstname,String lastname, int totalprice, boolean depositpaid, Map<String, String> bookingdatesMap, String additionalneeds ){
+    public Map<String, Object> expectedDataMapMethod(String firstname, String lastname, int totalprice, boolean depositpaid, Map<String, String> bookingdatesMap, String additionalneeds) {
 
         Map<String, Object> expectedData = new HashMap<>();
 
@@ -20,7 +20,10 @@ public class HerOkuAppTestData {
         expectedData.put("totalprice", totalprice);
         expectedData.put("depositpaid", depositpaid);
         expectedData.put("bookingdates", bookingdatesMap);
-        expectedData.put("additionalneeds", additionalneeds);
+
+        if (additionalneeds != null) {
+            expectedData.put("additionalneeds", additionalneeds);
+        }
 
         return expectedData;
     }
