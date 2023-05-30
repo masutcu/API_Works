@@ -1,22 +1,26 @@
 package pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingPojo {
+
     private String firstname;
     private String lastname;
-    private Integer totalprice; //null atanabilir diye Wrepper class kullanıyoruz, primitive olsa null atanamaz
+    private Integer totalprice;
     private Boolean depositpaid;
-    private BookingDatesPojo bookingDates;
-    private  String additionalneeds;
+    private BookingDatesPojo bookingdates;
+    private String additionalneeds;
 
-    public BookingPojo() { //boş constructor de-serialization için kullanılıyor. olmasa response veri çevrilemiyor.
+    public BookingPojo() {
     }
 
-    public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingDates, String additionalneeds) {
+    public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
-        this.bookingDates = bookingDates;
+        this.bookingdates = bookingdates;
         this.additionalneeds = additionalneeds;
     }
 
@@ -52,12 +56,12 @@ public class BookingPojo {
         this.depositpaid = depositpaid;
     }
 
-    public BookingDatesPojo getBookingDates() {
-        return bookingDates;
+    public BookingDatesPojo getBookingdates() {
+        return bookingdates;
     }
 
-    public void setBookingDates(BookingDatesPojo bookingDates) {
-        this.bookingDates = bookingDates;
+    public void setBookingdates(BookingDatesPojo bookingdates) {
+        this.bookingdates = bookingdates;
     }
 
     public String getAdditionalneeds() {
@@ -75,7 +79,7 @@ public class BookingPojo {
                 ", lastname='" + lastname + '\'' +
                 ", totalprice=" + totalprice +
                 ", depositpaid=" + depositpaid +
-                ", bookingDates=" + bookingDates +
+                ", bookingdates=" + bookingdates +
                 ", additionalneeds='" + additionalneeds + '\'' +
                 '}';
     }

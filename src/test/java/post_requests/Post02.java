@@ -59,7 +59,7 @@ public class Post02 extends HerOkuAppBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response=given(spec).body(expectedData).post("{first}");
+        Response response=given(spec).contentType(ContentType.JSON).body(expectedData).post("{first}");
         response.prettyPrint();
 
         //Do assertion

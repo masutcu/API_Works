@@ -1,15 +1,16 @@
 package pojos;
 
 public class BookingDatesPojo {
+
     private String checkin;
     private String checkout;
+
+    public BookingDatesPojo() {
+    }
 
     public BookingDatesPojo(String checkin, String checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
-    }
-
-    public BookingDatesPojo() {
     }
 
     public String getCheckin() {
