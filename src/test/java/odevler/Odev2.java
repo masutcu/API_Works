@@ -32,7 +32,7 @@ public class Odev2 extends ReqresBaseUrl {
  @Test
  public void odev02() {
      //set th url
-     spec.pathParam("first","23");
+     spec.pathParams("first","users","second",23);
 
      //Send the request and get the response
      Response response=given(spec).get("{first}"); //accept(ContentType.JSON) BaseUrl clasında ekli zaten

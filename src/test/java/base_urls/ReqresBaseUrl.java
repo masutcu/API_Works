@@ -9,7 +9,7 @@ public class ReqresBaseUrl {
     protected RequestSpecification spec;
     @Before
     public void setUp(){
-        spec=new RequestSpecBuilder().setContentType(ContentType.JSON).setAccept(ContentType.JSON).setBaseUri("https://reqres.in/api/users/").build();
+        spec=new RequestSpecBuilder().setContentType(ContentType.JSON).setAccept(ContentType.JSON).setBaseUri("https://reqres.in/api/").build();
         //setContentType(ContentType.JSON).setAccept(ContentType.JSON) önceki karşının alacağı, sonraki bizim kabıl edeceğimiz type
     }
 }
