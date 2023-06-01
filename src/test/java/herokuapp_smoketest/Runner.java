@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
         {
                 C01_PostRequest.class,
-                C02_GetRequest.class
+                C02_GetRequest.class,
+                C03_PutRequest.class
         }
 )
 public class Runner {
