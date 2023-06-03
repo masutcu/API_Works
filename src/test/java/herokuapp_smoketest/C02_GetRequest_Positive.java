@@ -1,7 +1,6 @@
 package herokuapp_smoketest;
 
 import base_urls.HerOkuAppBaseUrl;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.BookingDatesPojo;
@@ -12,7 +11,7 @@ import static herokuapp_smoketest.C01_PostRequest.bookingId;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class C02_GetRequest extends HerOkuAppBaseUrl {
+public class C02_GetRequest_Positive extends HerOkuAppBaseUrl {
     /*
     Test Case
     Given

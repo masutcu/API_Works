@@ -3,12 +3,14 @@ package herokuapp_smoketest;
 import base_urls.HerOkuAppBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import utils.ObjectMapperUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static herokuapp_smoketest.C01_PostRequest.bookingId;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class C04_PatchRequest extends HerOkuAppBaseUrl {
     /*
@@ -49,6 +51,13 @@ And
         //send the request get the response
         Response response=given(spec).body(expectedData).patch("{first}/{second}");
         response.prettyPrint();
+        //do assertion
+        Map<String, Object> actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), HashMap.class);
+        System.out.println("actualData = " + actualData);
+
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
+
 
 
     }
