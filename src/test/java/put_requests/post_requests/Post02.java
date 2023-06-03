@@ -1,4 +1,4 @@
-package post_requests;
+package put_requests.post_requests;
 
 import base_urls.HerOkuAppBaseUrl;
 import io.restassured.http.ContentType;

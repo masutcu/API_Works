@@ -1,17 +1,20 @@
-package post_requests;
+package put_requests.post_requests;
 
 import base_urls.JsonPlaceHolderBaseUrl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import org.junit.Test;
-import pojos.JsonPlaceHolderPojo;
-import utils.ObjectMapperUtils;
+import test_data.JsonPlaceHolderTestData;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Post05_ObjectMapper_Pojo extends JsonPlaceHolderBaseUrl {
-     /*
+public class Post05_ObjectMapper_Map extends JsonPlaceHolderBaseUrl {
+    /*
     Given
       1) https://jsonplaceholder.typicode.com/todos
       2) {
@@ -33,28 +36,26 @@ public class Post05_ObjectMapper_Pojo extends JsonPlaceHolderBaseUrl {
                                }
 */
 
-    @Test //en iyi yöntem pojo class ile objectMapper ın beraber kullanılmasıdır.
-    public void post05pojo() {
+    @Test
+    public void post05() throws JsonProcessingException {
         //set the url
         spec.pathParam("first","todos");
         //set the expected data
-        JsonPlaceHolderPojo expectedData=new JsonPlaceHolderPojo(55,"Tidy your room",false);
+        Map<String , Object> expectedData= new JsonPlaceHolderTestData().expectedDataMapMethod(55,"Tidy your room",false);
         System.out.println("expectedData = " + expectedData);
-
-        //send the request get the response
+        //send the request and get the response
         Response response=given(spec).body(expectedData).post("{first}");
         response.prettyPrint();
-
         //do assertion
-        //burada Json to java  yapacak metod (readValue()) exception attığı için utils de
-        JsonPlaceHolderPojo actualData=ObjectMapperUtils.convertJsonToJava(response.asString(),JsonPlaceHolderPojo.class);
+        Map<String ,Object> actualData=new ObjectMapper().readValue(response.asString(), HashMap.class); //De serialization
+        //readValue metodu 1. parametresini String olarak alır, 2. parametre olarak istenilen çevrilecek data tipi gelebilir.
+        //import com.fasterxml.jackson.databind.ObjectMapper;
         System.out.println("actualData = " + actualData);
 
         assertEquals(201,response.statusCode());
-        assertEquals(expectedData.getUserId(),actualData.getUserId());
-        assertEquals(expectedData.getTitle(),actualData.getTitle());
-        assertEquals(expectedData.getCompleted(),actualData.getCompleted());
-
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
 
     }
 }
