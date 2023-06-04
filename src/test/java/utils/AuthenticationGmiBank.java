@@ -10,7 +10,7 @@ public class AuthenticationGmiBank {
 //        System.out.println(generateToken());
 //    }
 
-    public static String genereteToken() {
+    public static String generateToken() {
 
         String body = "{ \"password\": \"Mark.123\", \"rememberMe\": true, \"username\": \"mark_twain\" }";
 
