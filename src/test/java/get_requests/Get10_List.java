@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Get10 extends GoRestBaseUrl {
+public class Get10_List extends GoRestBaseUrl {
    /*
         Given
             https://gorest.co.in/public/v1/users

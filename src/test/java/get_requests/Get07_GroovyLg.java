@@ -1,8 +1,6 @@
 package get_requests;
 
-import base_urls.HerOkuAppBaseUrl;
 import base_urls.JsonPlaceHolderBaseUrl;
-import io.restassured.internal.RequestSpecificationImpl;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -14,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Get07 extends JsonPlaceHolderBaseUrl {
+public class Get07_GroovyLg extends JsonPlaceHolderBaseUrl {
       /*
  Given
          https://jsonplaceholder.typicode.com/todos
@@ -34,6 +32,28 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
     public void get07(){
         //set the url
         spec.pathParam("first","todos");
+        /*
+        [
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "delectus aut autem",
+        "completed": false
+    },
+    {
+        "userId": 1,
+        "id": 2,
+        "title": "quis ut nam facilis et officia qui",
+        "completed": false
+    },
+    {
+        "userId": 1,
+        "id": 3,
+        "title": "fugiat veniam minus",
+        "completed": false
+    },
+    uzun bir list dönüyor. köşeli parantez varsa list
+         */
 
         //set the expected data
         //send the request get the response
@@ -47,8 +67,6 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         List<Object> list=jsonPath.getList("findAll{it.id>190}.id");//Groovy Language -->java temelli programlama dili
         System.out.println("list : "+list);
 
-        //Assert that there are 10 ids greater than 190
-        assertEquals(10,list.size());
 
         //Assert that there are 10 ids greater than 190
         assertEquals(10, list.size());

@@ -5,14 +5,13 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import test_data.HerOkuAppTestData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class Get09 extends HerOkuAppBaseUrl {
+public class Get09_innerMap extends HerOkuAppBaseUrl {
      /*
       Given
           https://restful-booker.herokuapp.com/booking/389
