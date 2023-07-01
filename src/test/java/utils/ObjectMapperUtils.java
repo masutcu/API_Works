@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ObjectMapperUtils {
     /*
     Map<String ,Object> actualData=new ObjectMapper().readValue(response.asString(), HashMap.class);
-    bu işlemi yapacağız
+    bu işlemi yapacagız
      */
 
     //  <T> T ==> herhangibir data tipini temsil eder obje değildir.
